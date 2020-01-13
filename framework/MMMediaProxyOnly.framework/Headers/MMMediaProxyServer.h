@@ -101,6 +101,9 @@ typedef void(^SessionEventBlock)(SESSION_EVENT_TYPE sessionEvent, NSMutableDicti
 // http接口是否在listening状态，较快返回
 - (BOOL)isListening;
 
+// 获取代理监听的状态
+- (BOOL)getListenerStatus;
+
 -(void)addSessionEventBlock:(SessionEventBlock)block;
 
 -(void)clearSessionEventBlock;

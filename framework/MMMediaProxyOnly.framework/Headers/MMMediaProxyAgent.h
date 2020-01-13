@@ -66,14 +66,6 @@ typedef enum : int8_t {
     TASK_EVENT_TYPE_VOD_HTTP_RESULT,
     TASK_EVENT_TYPE_LIVE_HTTP_TEST,
     TASK_EVENT_TYPE_LIVE_P2P_TEST,
-    TASK_EVENT_TYPE_LIVE_QUIC,
-    TASK_EVENT_TYPE_LIVE_QUIC_TEST,
-    TASK_EVENT_TYPE_LIVE_QUIC_START_RESULT,
-    TASK_EVENT_TYPE_LIVE_QUIC_STOP_RESULT,
-    TASK_EVENT_TYPE_LIVE_QUIC_WATCH_INFO,
-    TASK_EVENT_TYPE_LIVE_QUIC_SEND_ERROR,
-    TASK_EVENT_TYPE_LIVE_QUIC_START_CONN,
-    TASK_EVENT_TYPE_LIVE_QUIC_CONN_SUCCESS
 }TASK_EVENT_TYPE;
 
 typedef enum : int8_t {
@@ -88,8 +80,8 @@ typedef enum : int8_t {
     // 直播
     TASK_TRANSFER_TYPE_HTTP_P2P = 2,
     
-    // quic下载
-    TASK_TRANSFER_TYPE_QUIC = 3,
+    // quic已经无效
+//    TASK_TRANSFER_TYPE_QUIC = 3,
     
     // 纯P2P预加载
     TASK_TRANSFER_TYPE_PRELOAD_P2P = 4,
@@ -315,9 +307,7 @@ typedef void(^ProxyEventBlock)(NSString* eventInfo);
 -(uint64_t) getAllDownloadedBytes;
 /*获取总下载速率*/
 -(uint64_t) getCurAllDownloadRate;
-//quic
--(void) setQuicServer:(NSString*)server
-                 port:(int)port;
+
 
 
 

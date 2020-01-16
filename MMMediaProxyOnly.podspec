@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MMMediaProxyOnly'
-  s.version          = '1.0.0'
+  s.version          = '1.5.8.0'
   s.summary          = 'Pod for MMMediaProxyOnly'
   s.description      = '整合播放器代理库，以pod的形式对外开放。如有问题请及时沟通谢谢～'
   s.homepage         = 'https://github.com/cosmos33'

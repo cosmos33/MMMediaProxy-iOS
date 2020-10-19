@@ -131,6 +131,8 @@ typedef void(^ProxyEventBlock)(NSString* eventInfo);
 // 转换播放地址为代理地址[playUrl UTF8String], [[[NSURL URLWithString:playUrl] host] UTF8String]
 -(NSString*) playUrlToProxyUrl:(NSString*) playUrl key:(NSString*)key header:(NSString*)header isLive:(BOOL)isLive;
 
+-(NSString*) playUrlToProxyUrl:(NSString*) playUrl key:(NSString*)key header:(NSString*)header isLive:(BOOL)isLive ua:(NSString*) userAgent cookie:(NSString*)cookie;
+
 // 设置Cache
 -(int) setupCacheWithPath:(NSString*) cachePath;
 
@@ -229,7 +231,11 @@ typedef void(^ProxyEventBlock)(NSString* eventInfo);
                          rangeSize:(uint64_t) rangeSize
                         httpHeader:(NSString*)httpHeader
                       taskPriority:(int) priority
-                         limitRate:(uint64_t) limitRate;
+                         limitRate:(uint64_t) limitRate
+                                ua:(NSString*)userAgent
+                            cookie:(NSString*)cookie;
+                        
+
 -(int) addPreloadTaskWithRangeSize:(NSString*)preloadURL
                            fileKey:(NSString*)fileKey
                         rangeStart:(uint64_t)rangeStart
@@ -237,15 +243,10 @@ typedef void(^ProxyEventBlock)(NSString* eventInfo);
                         httpHeader:(NSString*)httpHeader
                       taskPriority:(int) priority
                          limitRate:(uint64_t) limitRate
-                      TransferType:(TASK_TRANSFER_TYPE)transferType;
--(int) addPreloadTaskWithPreloadDuration:(NSString*)preloadURL
-                                 fileKey:(NSString*)fileKey
-                              rangeStart:(uint64_t)rangeStart
-                               rangeSize:(uint64_t) rangeSize
-                            milliSeconds:(uint64_t) preloadMilliSeconds
-                              httpHeader:(NSString*)httpHeader
-                            taskPriority:(int) priority
-                               limitRate:(uint64_t) limitRate;
+                      TransferType:(TASK_TRANSFER_TYPE)transferType
+                                ua:(NSString*)userAgent
+                            cookie:(NSString*)cookie;
+
 -(int) addPreloadTaskWithPreloadDuration:(NSString*)preloadURL
                                  fileKey:(NSString*)fileKey
                               rangeStart:(uint64_t)rangeStart
@@ -254,7 +255,20 @@ typedef void(^ProxyEventBlock)(NSString* eventInfo);
                               httpHeader:(NSString*)httpHeader
                             taskPriority:(int) priority
                                limitRate:(uint64_t) limitRate
-                            TransferType:(TASK_TRANSFER_TYPE)transferType;
+                                      ua:(NSString*)userAgent
+                                  cookie:(NSString*)cookie;
+
+-(int) addPreloadTaskWithPreloadDuration:(NSString*)preloadURL
+                                 fileKey:(NSString*)fileKey
+                              rangeStart:(uint64_t)rangeStart
+                               rangeSize:(uint64_t) rangeSize
+                            milliSeconds:(uint64_t) preloadMilliSeconds
+                              httpHeader:(NSString*)httpHeader
+                            taskPriority:(int) priority
+                               limitRate:(uint64_t) limitRate
+                            TransferType:(TASK_TRANSFER_TYPE)transferType
+                                      ua:(NSString*)userAgent
+                                  cookie:(NSString*)cookie;
 /*对已经添加的任务限速*/
 -(int) limitRateWithTaskId:(NSInteger) taskId limitRate:(uint64_t) limitRate;
 /*删除一个任务*/
